@@ -1,6 +1,8 @@
 "use client"; // Indicate this file as a client component
 import { useState } from 'react';
 import jsPDF from 'jspdf';
+const handleButtonClick = (value: string) => {
+};
 
 const Calculator = () => {
   const [input, setInput] = useState<string>('0'); // Current input

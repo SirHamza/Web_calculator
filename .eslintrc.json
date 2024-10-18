@@ -1,8 +1,13 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals", 
+    "next", 
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "off"
+  }
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>, value: string) => {
-  // Logic here...
-};
-

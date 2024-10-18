@@ -1,8 +1,6 @@
 "use client"; // Indicate this file as a client component
 import { useState } from 'react';
 import jsPDF from 'jspdf';
-const handleButtonClick = (value: string) => {
-};
 
 const Calculator = () => {
   const [input, setInput] = useState<string>('0'); // Current input
@@ -21,11 +19,8 @@ const Calculator = () => {
         resetForNextCalculation(res);
       }
     } else {
-      if (input === '0' && !['+', '-', '*', '/'].includes(value)) {
-        setInput(value); // Replace '0' if not an operator
-      } else {
-        setInput((prev) => prev + value);
-      }
+      // Use 'value' here
+      setInput((prev) => prev === '0' ? value : prev + value);
       setFullExpression((prev) => prev + (prev ? ` ${value} ` : value));
     }
   };
@@ -33,8 +28,7 @@ const Calculator = () => {
   const evalExpression = (expression: string): number => {
     try {
       return Function(`'use strict'; return (${expression})`)();
-    } catch (e) {
-      console.error('Invalid expression:', expression);
+    } catch {
       return 0; // Return 0 if the expression is invalid
     }
   };
@@ -129,3 +123,4 @@ const Calculator = () => {
 };
 
 export default Calculator;
+
